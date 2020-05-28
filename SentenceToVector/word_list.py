@@ -1,4 +1,4 @@
-class WFDict:
+class Corpus:
     def __init__(self, word=None, word_list=None):
         self.word_freq_dict = {}
         if word is not None:
