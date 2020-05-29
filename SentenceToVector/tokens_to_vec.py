@@ -49,3 +49,9 @@ class WordToVector:
                 for word in sentence if word in self.word_vec_dict]
                 or [np.zeros(self.dim)], axis=0)
         ])
+
+    def getWordVector(self, word):
+        if self.no_train:
+            return self.word_vec_dict[word]
+        else:
+            return self.to_train_model.wv.get_vector(word)
