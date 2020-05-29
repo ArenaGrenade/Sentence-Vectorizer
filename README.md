@@ -36,4 +36,4 @@ if __name__ == '__main__':
     word = input("Enter any word: ")
     print(s2v.getWordVector(word))
 ```
-Here, we can enter any word that is not even in the dataset and the code wills till generate a vector corresponding to it.
+Here, we can enter any word that is not even in the dataset and the code will still generate a vector corresponding to it.
