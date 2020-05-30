@@ -10,7 +10,7 @@ setup(
     description="A package that converts sentences into a vector",
     long_description_content_type="text/markdown",
     url="https://github.com/ArenaGrenade/Sentence-Vectorizer",
-    download_url="",
+    download_url="https://github.com/ArenaGrenade/Sentence-Vectorizer/archive/v1.2.tar.gz",
     install_requires=[
         "nltk",
         "numpy",
