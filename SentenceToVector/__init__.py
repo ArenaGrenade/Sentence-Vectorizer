@@ -7,5 +7,6 @@ for download_package in ['wordnet', 'averaged_perceptron_tagger', 'punkt', 'stop
 
 from .bag_of_words_converter import BOWConvert
 from .tokens_to_vec import *
+from .dataset_format_helper import *
 
 sentence_tokenizer = data.load('tokenizers/punkt/english.pickle')

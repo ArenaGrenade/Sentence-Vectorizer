@@ -10,14 +10,17 @@ class WordToVector:
         3: "300d"
     }
 
-    def __init__(self, train_new_model=False, mode=0, tokenized_dataset=None, vector_size=100, train_epochs=30):
+    def __init__(self, train_new_model=False, filepath=None, mode=0, tokenized_dataset=None, vector_size=100,
+                 train_epochs=30):
+
         self.word_weight_vec = None
 
         if not train_new_model:
-            self.no_train = True
-            with open("glove.6B." + self.mode_dict[mode] + ".txt", "rb") as model_file:
-                self.word_vec_dict = {word_vec_pair.split()[0]: np.array(map(float, word_vec_pair.split()[1:]))
-                                      for word_vec_pair in model_file}
+            if filepath is not None:
+                self.no_train = True
+                with open(filepath + "glove.6B." + self.mode_dict[mode] + ".txt", "rb") as model_file:
+                    self.word_vec_dict = {word_vec_pair.split()[0]: np.array(map(float, word_vec_pair.split()[1:]))
+                                          for word_vec_pair in model_file}
 
         else:
             self.no_train = False
@@ -43,12 +46,19 @@ class WordToVector:
             self.dim = len(next(iter(self.word_vec_dict)))
 
     def convertSentenceToVector(self, sentence):
-        return np.array([
-            np.mean([
-                self.word_vec_dict[word] * self.word_weight_vec[word]
-                for word in sentence if word in self.word_vec_dict]
-                or [np.zeros(self.dim)], axis=0)
-        ])
+        if self.no_train:
+            return np.array([
+                np.mean([
+                    self.word_vec_dict[word]  # * self.word_weight_vec[word]
+                    for word in sentence if word in self.word_vec_dict]
+                    or [np.zeros(self.dim)], axis=0)
+            ])
+        else:
+            return np.array([
+                np.mean([
+                    self.to_train_model.wv.get_vector(word) for word in sentence
+                ], axis=0)
+            ])
 
     def getWordVector(self, word):
         if self.no_train:
