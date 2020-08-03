@@ -39,7 +39,7 @@ if __name__ == '__main__':
 Here, we can enter any word that is not even in the dataset and the code will still generate a vector corresponding to it.
 
 
-##TODO
+# TODO
 
 Have to update the order of imports to remove a massive breaking bug in the package hosted on pypi.
 Need to add other methods of vectorization as well.
