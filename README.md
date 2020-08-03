@@ -1,5 +1,5 @@
 # Sentence-Vectorizer
-A simple package that given a list of sentences converts each of them to a vector.
+A simple package that given a list of sentences converts each of them to a vector. It is essentially a wrapper around other NLP libraries.
 
 This package can be used for the following purposes:
 
@@ -37,3 +37,10 @@ if __name__ == '__main__':
     print(s2v.getWordVector(word))
 ```
 Here, we can enter any word that is not even in the dataset and the code will still generate a vector corresponding to it.
+
+
+##TODO
+
+Have to update the order of imports to remove a massive breaking bug in the package hosted on pypi.
+Need to add other methods of vectorization as well.
+
